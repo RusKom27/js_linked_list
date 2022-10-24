@@ -1,9 +1,9 @@
 import {List} from "./list.js";
 
 let debug = () => {
-    list.tail.print(-1);
+    list.print(1, list.head);
     console.log("---------");
-    list.head.print(1);
+    list.print(-1, list.tail);
     console.log("---------");
 }
 
