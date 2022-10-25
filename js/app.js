@@ -15,7 +15,7 @@ debug();
 console.log(list.find_by_value(1));
 console.log(list.find_by_value(6));
 console.log(list.find_by_index(3));
-list.insert(10, 5);
+list.insert(10, 0);
 console.log(list.to_string());
 list.bubble_sort();
 let arr = list.to_array();

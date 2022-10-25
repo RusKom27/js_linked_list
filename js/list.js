@@ -23,7 +23,9 @@ List.prototype.push_back = function(value) {
 }
 
 List.prototype.pop_back = function() {
+    let deleted_node = this.head;
     this.head = this.head.next;
+    return deleted_node;
 }
 
 List.prototype.push_front = function(value) {
@@ -44,7 +46,9 @@ List.prototype.push_front = function(value) {
 }
 
 List.prototype.pop_front = function() {
+    let deleted_node = this.tail;
     this.tail = this.tail.prev;
+    return deleted_node;
 }
 
 List.prototype.find_by_value = function(value, i=0, current_node=this.head) {
@@ -80,6 +84,7 @@ List.prototype.length = function(current_node=this.head, i=0) {
 }
 
 List.prototype.bubble_sort = function(current_node=this.head, finish = true) {
+    console.log(arguments[0], arguments[1]);
     if (current_node) {
         if (current_node.next) {
             if (current_node.value > current_node.next.value) {
