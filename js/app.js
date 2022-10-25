@@ -17,13 +17,16 @@ console.log(list.find_by_value(6));
 console.log(list.find_by_index(3));
 list.insert(10, 0);
 console.log(list.to_string());
+list.from_array([403,105,66]);
 list.bubble_sort();
 let arr = list.to_array();
 console.log(arr);
+console.log(list.binary_find(2))
 list.clear();
 list.from_array(arr);
 debug();
 list.reverse();
 list.push_back(100);
 console.log(list.to_string());
+
 

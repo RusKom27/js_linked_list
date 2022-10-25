@@ -84,7 +84,6 @@ List.prototype.length = function(current_node=this.head, i=0) {
 }
 
 List.prototype.bubble_sort = function(current_node=this.head, finish = true) {
-    console.log(arguments[0], arguments[1]);
     if (current_node) {
         if (current_node.next) {
             if (current_node.value > current_node.next.value) {
@@ -101,7 +100,7 @@ List.prototype.bubble_sort = function(current_node=this.head, finish = true) {
 
 List.prototype.from_array = function(array, i = 0) {
     if (i < array.length) {
-        this.push_front(array[i]);
+        this.push_back(array[i]);
         this.from_array(array, i + 1);
     }
 }
@@ -117,6 +116,18 @@ List.prototype.to_array = function(array = [], current_node=this.head) {
 List.prototype.clear = function() {
     this.head = null;
     this.tail = null;
+}
+
+List.prototype.binary_find = function(value) {
+    let start = 0;
+    let end = this.length() - 1;
+
+    while (start <= end) {
+        let middle = Math.floor((start + end) / 2);
+        if (value === this.find_by_index(middle).value) return middle;
+        if (value < this.find_by_index(middle).value) end = middle - 1;
+        else start = middle + 1;
+    }
 }
 
 List.prototype.to_string = function() {
