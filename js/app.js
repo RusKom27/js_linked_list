@@ -18,15 +18,20 @@ console.log(list.find_by_index(3));
 list.insert(10, 0);
 console.log(list.to_string());
 list.from_array([403,105,66]);
+for (let i = 0; i < 1000; i++) {
+    list.push_back(i);
+}
 list.bubble_sort();
 let arr = list.to_array();
-console.log(arr);
-console.log(list.binary_find(2))
+console.log(arr.toString());
+console.log(list.binary_find(222))
 list.clear();
 list.from_array(arr);
-debug();
+// debug();
+console.log(list);
+
 list.reverse();
-list.push_back(100);
+console.log(list);
 console.log(list.to_string());
 
 

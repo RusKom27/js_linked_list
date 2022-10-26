@@ -69,22 +69,35 @@ List.prototype.insert = function(value, index) {
     if (node) node.value = value;
 }
 
-List.prototype.reverse = function(head_node=this.head, tail_node=this.tail, i=0) {
-    if (i <= Math.floor(this.length() / 2) && head_node != null && tail_node != null) {
+List.prototype.length = function() {
+    let current_node=this.head;
+    let i=0;
+    while (current_node) {
+        current_node = current_node.next;
+        i++;
+    }
+    return i;
+}
+
+List.prototype.reverse = function() {
+    let length = this.length();
+    let head_node=this.head;
+    let tail_node=this.tail;
+    let i=0;
+    while (i <= Math.floor(length / 2) && head_node != null && tail_node != null) {
         let temp = head_node.value;
         head_node.value = tail_node.value;
         tail_node.value = temp;
-        this.reverse(head_node.next, tail_node.prev, i+1);
+        head_node = head_node.next;
+        tail_node = tail_node.prev;
+        i++;
     }
 }
 
-List.prototype.length = function(current_node=this.head, i=0) {
-    if(current_node) return this.length(current_node.next, i+1);
-    else return i;
-}
-
-List.prototype.bubble_sort = function(current_node=this.head, finish = true) {
-    if (current_node) {
+List.prototype.bubble_sort = function() {
+    let current_node = this.head;
+    let finish = true;
+    while (current_node) {
         if (current_node.next) {
             if (current_node.value > current_node.next.value) {
                 let temp = current_node.value;
@@ -92,9 +105,13 @@ List.prototype.bubble_sort = function(current_node=this.head, finish = true) {
                 current_node.next.value = temp;
                 finish = false;
             }
-            this.bubble_sort(current_node.next, finish);
-        } else if (!finish)
-            this.bubble_sort(this.head, true);
+            current_node = current_node.next;
+        } else if (!finish){
+            current_node = this.head;
+            finish = true;
+        } else {
+            current_node = null;
+        }
     }
 }
 
@@ -105,10 +122,12 @@ List.prototype.from_array = function(array, i = 0) {
     }
 }
 
-List.prototype.to_array = function(array = [], current_node=this.head) {
-    if(current_node) {
+List.prototype.to_array = function() {
+    let array = [];
+    let current_node = this.head;
+    while (current_node) {
         array.push(current_node.value);
-        this.to_array(array, current_node.next);
+        current_node = current_node.next;
     }
     return array
 }
